@@ -6,8 +6,6 @@ import { createBrowserHistory } from "history";
 
 import store from "./store";
 
-import "../styles/index.css";
-
 class App extends React.Component {
   public render() {
     const history = createBrowserHistory();
