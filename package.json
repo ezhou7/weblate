@@ -5,15 +5,16 @@
   "scripts": {
     "clean": "rm -rf dist",
     "compile": "tsc",
-    "build": "webpack -p --config webpack.config.prod.js",
+    "build": "webpack --config webpack.config.prod.js",
     "start": "node dist/index.js",
-    "dev-start": "webpack -w --mode=development --config webpack.config.dev.js & nodemon dist/index.js"
+    "start:dev": "webpack -w --config webpack.config.dev.js & nodemon dist/index.js"
   },
   "license": "MIT",
   "dependencies": {
     "@blueprintjs/core": "^3.24.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.2.0",
     "history": "^5.0.0",
@@ -38,6 +39,7 @@
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.0.3",
     "ts-loader": "^8.0.12",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.2",
     "url-loader": "^4.1.1",
     "webpack": "^5.10.1",

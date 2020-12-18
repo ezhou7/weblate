@@ -1,5 +1,6 @@
 import * as bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import http from "http";
@@ -7,7 +8,16 @@ import path from "path";
 
 import apiRouter from "./api";
 
+// set server environment variables
+const serverEnvPath = path.resolve("envs", "server", ".env.dev");
+dotenv.config({ path: serverEnvPath });
+
 const server = express();
+
+// allow webpack devtool "eval-cheap-source-map" to execute on Firefox when devving
+const scriptSrcHeaders = process.env.NODE_ENV === "development" ?
+  ["'self'", "'unsafe-eval'"] :
+  ["'self'"];
 
 // use default security options
 server.use(helmet());
@@ -16,8 +26,8 @@ server.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'", "data:", "https://*.googleapis.com", "https://fonts.gstatic.com"],
-      scriptSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+      scriptSrc: scriptSrcHeaders,
+      styleSrc: ["'self'", "https:"],
       objectSrc: ["'none'"],
       baseUri: ["'self'"],
       workerSrc: ["'self'", "blob:"]
