@@ -44,8 +44,6 @@ module.exports = {
     })
   ],
   optimization: {
-    namedModules: false,
-    namedChunks: false,
     removeAvailableModules: true,
     removeEmptyChunks: true,
     mergeDuplicateChunks: true,
