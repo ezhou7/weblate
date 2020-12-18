@@ -6,6 +6,10 @@ import { createBrowserHistory } from "history";
 
 import store from "./store";
 
+const HelloWorldPage = () => (
+  <div>Hello World!</div>
+);
+
 class App extends React.Component {
   public render() {
     const history = createBrowserHistory();
@@ -15,6 +19,9 @@ class App extends React.Component {
       <Provider store={store}>
         <Router history={history}>
           <Switch>
+            <Route path="/">
+              <HelloWorldPage />
+            </Route>
           </Switch>
         </Router>
       </Provider>
