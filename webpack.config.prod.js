@@ -4,7 +4,7 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
-  entry: "./src/app/index.tsx",
+  entry: "./client/index.tsx",
   output: {
     path: path.join(__dirname, "/dist/app/"),
     filename: "main.js"
@@ -34,7 +34,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/app/index.html",
+      template: "./public/index.html",
       filename: "./index.html"
     }),
     new webpack.DefinePlugin({

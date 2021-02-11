@@ -9,7 +9,7 @@ module.exports = () => {
 
   return {
     devtool: "eval-cheap-source-map",
-    entry: "./src/app/index.tsx",
+    entry: "./client/index.tsx",
     mode: "development",
     output: {
       path: path.join(__dirname, "/dist/app/"),
@@ -41,7 +41,7 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "./src/app/index.html",
+        template: "./public/index.html",
         filename: "./index.html"
       }),
       new webpack.DefinePlugin({
