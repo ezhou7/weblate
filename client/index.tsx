@@ -3,11 +3,17 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { Route, Router, Switch } from "react-router";
 import { createBrowserHistory } from "history";
+import { Button, H1 } from "@blueprintjs/core";
 
 import store from "./store";
 
+import "./_index.css";
+
 const HelloWorldPage = () => (
-  <div>Hello World!</div>
+  <div>
+    <H1>Hello World!</H1>
+    <Button>Button</Button>
+  </div>
 );
 
 class App extends React.Component {

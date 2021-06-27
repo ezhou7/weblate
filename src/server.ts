@@ -1,4 +1,3 @@
-import * as bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import express from "express";
@@ -19,6 +18,10 @@ const scriptSrcHeaders = process.env.NODE_ENV === "development" ?
   ["'self'", "'unsafe-eval'"] :
   ["'self'"];
 
+const styleSrcHeaders = process.env.NODE_ENV === "development" ?
+  ["'self'", "https:", "'unsafe-inline'"] :
+  ["'self'", "https:"];
+
 // use default security options
 server.use(helmet());
 // additional security options
@@ -27,7 +30,7 @@ server.use(
     directives: {
       defaultSrc: ["'self'", "data:", "https://*.googleapis.com", "https://fonts.gstatic.com"],
       scriptSrc: scriptSrcHeaders,
-      styleSrc: ["'self'", "https:"],
+      styleSrc: styleSrcHeaders,
       objectSrc: ["'none'"],
       baseUri: ["'self'"],
       workerSrc: ["'self'", "blob:"]
@@ -42,8 +45,8 @@ const indexPath = path.join(appPath, "index.html");
 server.set("indexPath", indexPath);
 
 server.use(express.static(appPath));
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
 server.use(cookieParser());
 
 server.use("/api", apiRouter);
