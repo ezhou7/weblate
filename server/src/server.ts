@@ -53,6 +53,6 @@ server.use("/api", apiRouter);
 
 server.use("/*", (req, res) => {
   res.sendFile(server.get("indexPath"));
-})
+});
 
 export default http.createServer(server);
